@@ -1,2 +1,2 @@
 # ftp-ec2-s3-lambda-cf
-EC2 that automatically move files received through FTP to S3 using AWS Lambda
+EC2 that automatically move files received through FTP to S3
