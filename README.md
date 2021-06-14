@@ -10,12 +10,12 @@ CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformat
 
 ## Usage
 
-* IP / domain name: take not og the public IP address / DNS of your EC2 instance
+* IP / domain name: take note of the public IP address / DNS name of your EC2 instance
 * Username: ftp
 * Password: Watch your ftp service password at the end of you EC2 server User Data. If you would like to change your password log in to your server and change the password.txt file.
 
 
 ## ToDo
 
-* Add cloudformation parameters for VPC and subnets
-
+* Add cloudformation parameters for VPC, subnets, instance type, volume size and keypair.
+* Add the creation of an elastic IP address in the template.
