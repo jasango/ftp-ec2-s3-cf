@@ -1,0 +1,2 @@
+# /etc/cron.d/ftp-service Run move to s3 each 5 minutes
+*/5 * * * * ec2-user /home/ec2-user/move-to-s3.sh
