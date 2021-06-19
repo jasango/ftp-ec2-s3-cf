@@ -5,7 +5,8 @@
 
 ## Installation
 
-CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template?&templateURL=https://raw.githubusercontent.com/jasango/ftp-ec2-s3-cf/main/code/template.json)
+CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template?&templateURL=https://ftp-ec2-s3-cf.s3.us-west-2.amazonaws.com/template.json)
+
 
 ## Usage
 
