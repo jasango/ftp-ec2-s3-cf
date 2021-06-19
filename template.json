@@ -1,16 +1,45 @@
 {
    "AWSTemplateFormatVersion": "2010-09-09",
-   "Description": "",
+   "Description": "EC2 instance with FTP that transfer data to S3 bucket",
+   "Parameters": {
+      "S3BucketName": {
+         "Type": "String",
+         "Description": "Bucket to store ftp files",
+         "Default": "jasango-webcam"
+      },
+      "KeyPairName": {
+         "Type": "String",
+         "Description": "KeyPair for your EC2 instance",
+         "Default": "ftp-key-pair"
+      },
+      "SubnetId": {
+         "Type": "String",
+         "Description": "SubnetId",
+         "Default": "subnet-1c54be47"
+
+      },
+      "EC2VolumeSize": {
+         "Type": "String",
+         "Description": "EC2 Volume size",
+         "Default": "8"
+      }
+   },
    "Resources": {
       "EC2Instance": {
          "Type": "AWS::EC2::Instance",
          "Properties": {
             "ImageId": "ami-0800fc0fa715fdcfe",
             "InstanceType": "t3.nano",
-            "KeyName": "ftp-key-pair",
+            "KeyName": { "Ref" : "KeyPairName" },
             "AvailabilityZone":  { "Fn::Select" : [ "2", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] },
-            "SubnetId": "subnet-1c54be47",
+            "SubnetId": { "Ref" : "SubnetId" },
             "SecurityGroupIds": [ { "Ref" : "EC2SecurityGroup" }],
+            "Tags" : [
+               {
+                  "Key" : "Name",
+                  "Value" : "FTP Server"
+               }
+            ],
             "UserData": {"Fn::Base64":{"Fn::Join":["", [
                 "#!/bin/bash\n",
                 "sudo yum update -y\n",
@@ -37,7 +66,13 @@
          "Type": "AWS::EC2::SecurityGroup",
          "Properties": {
             "GroupDescription": "ftp server security group",
-            "GroupName": "ftp-server-security-group",
+            "GroupName": { 
+            "Fn::Join": [
+               "", [
+                  { "Ref": "AWS::StackId" },
+                  " ftp-server-security-group"
+               ]
+            ]},
             "VpcId": "vpc-f6785291",
             "SecurityGroupIngress": [
                {
@@ -68,7 +103,7 @@
          "Properties": {
             "AvailabilityZone": { "Fn::Select" : [ "2", { "Fn::GetAZs" : { "Ref" : "AWS::Region" } } ] },
             "Encrypted": false,
-            "Size": 8,
+            "Size": { "Ref" : "EC2VolumeSize" },
             "VolumeType": "gp2",
             "MultiAttachEnabled": false
          }
