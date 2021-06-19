@@ -5,7 +5,7 @@
 
 ## Installation
 
-CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template?&templateURL=https://ftp-ec2-s3-cf.s3.us-west-2.amazonaws.com/template.json)
+CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template?&templateURL=https://raw.githubusercontent.com/jasango/ftp-ec2-s3-cf/main/template.json)
 
 
 ## Usage
@@ -17,5 +17,4 @@ CloudFormation template [Deploy now!](https://console.aws.amazon.com/cloudformat
 
 ## ToDo
 
-* Add cloudformation parameters for VPC, subnets, instance type, volume size and keypair.
 * Add the creation of an elastic IP address in the template.
