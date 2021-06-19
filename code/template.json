@@ -12,6 +12,11 @@
          "Description": "KeyPair for your EC2 instance",
          "Default": "ftp-key-pair"
       },
+      "VpcId": {
+         "Type": "String",
+         "Description": "VPC to create your EC2 instance",
+         "Default": "vpc-f6785291"
+      },
       "SubnetId": {
          "Type": "String",
          "Description": "SubnetId",
@@ -73,7 +78,7 @@
                   " ftp-server-security-group"
                ]
             ]},
-            "VpcId": "vpc-f6785291",
+            "VpcId": { "Ref": "VpcId" },
             "SecurityGroupIngress": [
                {
                   "CidrIp": "0.0.0.0/0",
